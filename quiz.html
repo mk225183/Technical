@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Quiz App</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+
+    .quiz-container {
+      background: #fff;
+      width: 420px;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #4e4376;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #ddd;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 10px;
+      background: #4e4376;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .timer {
+      text-align: right;
+      font-size: 14px;
+      color: #e63946;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .options label {
+      display: block;
+      background: #f7f7f7;
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      transition: 0.3s;
+    }
+
+    .options label:hover {
+      background: #e0e7ff;
+      border-color: #4e4376;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #4e4376;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #2b5876;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4e4376;
+      margin-top: 10px;
+    }
+
+    .feedback {
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Java Quiz</h2>
+
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <div class="timer">⏰ Time left: <span id="time">10</span>s</div>
+
+    <div id="quiz">
+      <div class="question" id="question"></div>
+      <div class="options" id="options"></div>
+      <button id="nextBtn">Next</button>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+    <div id="feedback" class="feedback hidden"></div>
+    <button id="restartBtn" class="hidden">Restart Quiz</button>
+  </div>
+
+  <!-- Sound effects -->
+  <audio id="correctSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_55f5a5a9b2.mp3?filename=correct-answer-2-6275.mp3"></audio>
+  <audio id="wrongSound" src="https://cdn.pixabay.com/download/audio/2021/08/09/audio_6b9b2e6dc5.mp3?filename=wrong-answer-126515.mp3"></audio>
+  <audio id="timerSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f73377e25a.mp3?filename=clock-ticking-2-104919.mp3"></audio>
+
+  <script>
+    const quizData = [
+      { question: "1. Which keyword is used to inherit a class in Java?", options: ["super", "this", "extends", "implements"], answer: "extends" },
+      { question: "2. Which method is the entry point of a Java program?", options: ["start()", "main()", "run()", "init()"], answer: "main()" },
+      { question: "3. Which of these is not a Java primitive type?", options: ["int", "String", "float", "boolean"], answer: "String" },
+      { question: "4. Which package contains the Scanner class?", options: ["java.io", "java.util", "java.lang", "java.text"], answer: "java.util" },
+      { question: "5. What is the size of an int variable in Java?", options: ["8 bits", "16 bits", "32 bits", "64 bits"], answer: "32 bits" },
+      { question: "6. Which operator is used for comparison in Java?", options: ["=", "==", ":=", "equals"], answer: "==" },
+      { question: "7. Which concept allows multiple methods with the same name but different parameters?", options: ["Encapsulation", "Polymorphism", "Overloading", "Overriding"], answer: "Overloading" },
+      { question: "8. Which exception is thrown when dividing by zero?", options: ["NullPointerException", "ArithmeticException", "NumberFormatException", "IOException"], answer: "ArithmeticException" },
+      { question: "9. Which keyword is used to prevent inheritance?", options: ["static", "final", "abstract", "private"], answer: "final" },
+      { question: "10. Which interface is implemented by all collection classes?", options: ["Serializable", "Cloneable", "Collection", "List"], answer: "Collection" },
+      { question: "11. Which method is used to start a thread?", options: ["run()", "execute()", "start()", "begin()"], answer: "start()" },
+      { question: "12. What is the parent class of all Java classes?", options: ["System", "Object", "Class", "Main"], answer: "Object" },
+      { question: "13. Which of these can store multiple values of different types?", options: ["Array", "List", "Map", "Class"], answer: "Map" },
+      { question: "14. What is JVM short for?", options: ["Java Variable Machine", "Java Virtual Machine", "Java Version Manager", "None"], answer: "Java Virtual Machine" },
+      { question: "15. Which keyword is used to define a constant?", options: ["const", "static", "final", "constant"], answer: "final" },
+      { question: "16. Which collection class does not allow duplicates?", options: ["List", "Set", "Map", "Queue"], answer: "Set" },
+      { question: "17. Which of these is not an OOP principle?", options: ["Encapsulation", "Abstraction", "Composition", "Compilation"], answer: "Compilation" },
+      { question: "18. What does JDK stand for?", options: ["Java Development Kit", "Java Deployment Key", "Java Data Kit", "Java Debugging Kit"], answer: "Java Development Kit" },
+      { question: "19. What is used to handle exceptions in Java?", options: ["if-else", "try-catch", "throw-catch", "error()"], answer: "try-catch" },
+      { question: "20. Which keyword is used to create an object?", options: ["class", "new", "create", "object"], answer: "new" }
+    ];
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultEl = document.getElementById("result");
+    const feedbackEl = document.getElementById("feedback");
+    const progressEl = document.getElementById("progress");
+    const restartBtn = document.getElementById("restartBtn");
+    const timerEl = document.getElementById("time");
+    const correctSound = document.getElementById("correctSound");
+    const wrongSound = document.getElementById("wrongSound");
+    const timerSound = document.getElementById("timerSound");
+
+    let currentQuestion = 0;
+    let score = 0;
+    let timer;
+    let timeLeft = 10;
+
+    function startQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      document.getElementById("quiz").classList.remove("hidden");
+      resultEl.classList.add("hidden");
+      feedbackEl.classList.add("hidden");
+      restartBtn.classList.add("hidden");
+      loadQuestion();
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timeLeft = 10;
+      timerEl.textContent = timeLeft;
+      timerSound.play();
+      timer = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          nextQuestion();
+        }
+      }, 1000);
+    }
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      q.options.forEach(option => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="option" value="${option}"> ${option}`;
+        optionsEl.appendChild(label);
+      });
+
+      progressEl.style.width = `${(currentQuestion / quizData.length) * 100}%`;
+      startTimer();
+    }
+
+    function nextQuestion() {
+      const selected = document.querySelector('input[name="option"]:checked');
+      clearInterval(timer);
+      timerSound.pause();
+      timerSound.currentTime = 0;
+
+      if (selected) {
+        if (selected.value === quizData[currentQuestion].answer) {
+          score++;
+          correctSound.play();
+        } else {
+          wrongSound.play();
+        }
+      } else {
+        wrongSound.play();
+      }
+
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        setTimeout(loadQuestion, 600);
+      } else {
+        setTimeout(showResult, 600);
+      }
+    }
+
+    function showResult() {
+      document.getElementById("quiz").classList.add("hidden");
+      resultEl.classList.remove("hidden");
+      feedbackEl.classList.remove("hidden");
+      restartBtn.classList.remove("hidden");
+      progressEl.style.width = "100%";
+
+      const percentage = Math.round((score / quizData.length) * 100);
+      resultEl.innerHTML = `🎉 You scored <b>${score}</b> out of <b>${quizData.length}</b> (${percentage}%)`;
+
+      let feedback = "";
+      if (percentage >= 85) feedback = "🌟 Excellent work! You’re a Java pro!";
+      else if (percentage >= 60) feedback = "👍 Good job! Keep practicing.";
+      else feedback = "💪 Try again! Practice makes perfect.";
+
+      feedbackEl.textContent = feedback;
+    }
+
+    nextBtn.addEventListener("click", nextQuestion);
+    restartBtn.addEventListener("click", startQuiz);
+
+    startQuiz();
+  </script>
+</body>
+</html>

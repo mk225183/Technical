@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MyShop | E-Commerce</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+header {
+    background: #222;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* PRODUCTS */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.product button {
+    background: green;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CART */
+.cart-box {
+    background: #fff;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.remove-btn {
+    background: red;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* PAYMENT */
+.payment {
+    background: #fff;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.payment input, .payment select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+.pay-btn {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MyShop</h1>
+    <div>🛒 Cart: <span id="cartCount">0</span> items</div>
+</header>
+
+<div class="container">
+
+<h2>Products</h2>
+
+<div class="products">
+    <div class="product">
+        <img src="https://picsum.photos/300/200?1">
+        <h3>Smart Phone</h3>
+        <p>₹15000</p>
+        <button onclick="addToCart('Smart Phone',15000)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="https://picsum.photos/300/200?2">
+        <h3>Laptop</h3>
+        <p>₹45000</p>
+        <button onclick="addToCart('Laptop',45000)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="https://picsum.photos/300/200?3">
+        <h3>Headphones</h3>
+        <p>₹2500</p>
+        <button onclick="addToCart('Headphones',2500)">Add to Cart</button>
+    </div>
+</div>
+
+<!-- CART ITEMS -->
+<div class="cart-box">
+<h2>Cart Items</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Qty</th>
+    <th>Total</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody id="cartItems"></tbody>
+</table>
+
+<h3 style="text-align:right">Grand Total: ₹<span id="grandTotal">0</span></h3>
+</div>
+
+<!-- PAYMENT -->
+<div class="payment">
+<h2>Payment Details</h2>
+
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="text" id="address" placeholder="Address" required>
+
+<select id="paymentMode">
+    <option value="">Select Payment Method</option>
+    <option>UPI</option>
+    <option>Credit Card</option>
+    <option>Debit Card</option>
+    <option>Cash on Delivery</option>
+</select>
+
+<button class="pay-btn" onclick="makePayment()">Pay Now</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 MyShop | Talent Growth Initiative
+</footer>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+    let item = cart.find(p => p.name === name);
+    if (item) {
+        item.qty++;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+    renderCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+
+function renderCart() {
+    let tbody = document.getElementById("cartItems");
+    tbody.innerHTML = "";
+    let total = 0;
+    let count = 0;
+
+    cart.forEach((item, index) => {
+        let itemTotal = item.price * item.qty;
+        total += itemTotal;
+        count += item.qty;
+
+        tbody.innerHTML += `
+        <tr>
+            <td>${item.name}</td>
+            <td>₹${item.price}</td>
+            <td>${item.qty}</td>
+            <td>₹${itemTotal}</td>
+            <td><button class="remove-btn" onclick="removeItem(${index})">Remove</button></td>
+        </tr>`;
+    });
+
+    document.getElementById("grandTotal").innerText = total;
+    document.getElementById("cartCount").innerText = count;
+}
+
+function makePayment() {
+    if (cart.length === 0) {
+        alert("Cart is empty!");
+        return;
+    }
+    if (
+        document.getElementById("name").value === "" ||
+        document.getElementById("address").value === "" ||
+        document.getElementById("paymentMode").value === ""
+    ) {
+        alert("Please fill all payment details");
+        return;
+    }
+
+    alert("✅ Payment Successful! Order Placed.");
+    cart = [];
+    renderCart();
+}
+</script>
+
+</body>
+</html>

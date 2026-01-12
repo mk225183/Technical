@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Valley Public School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #0a5c36;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1509062522246-3755977927d7');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background: #f4f4f4;
+            padding: 20px;
+            width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #0a5c36;
+        }
+
+        /* Notice */
+        .notice {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        /* Contact Form */
+        form {
+            max-width: 500px;
+            margin: auto;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background: #0a5c36;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #08472a;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Green Valley Public School</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#teachers">Teachers</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h2>Welcome to Green Valley Public School</h2>
+    <p>Shaping Young Minds for a Better Tomorrow</p>
+</section>
+
+<section id="about">
+    <h2>About Our School</h2>
+    <p>
+        Green Valley Public School is committed to providing quality education,
+        focusing on academic excellence, discipline, and overall personality development.
+    </p>
+</section>
+
+<section id="courses">
+    <h2>Our Courses</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Primary Education</h3>
+            <p>Strong foundation with fun-based learning.</p>
+        </div>
+        <div class="card">
+            <h3>Secondary Education</h3>
+            <p>Concept clarity with practical exposure.</p>
+        </div>
+        <div class="card">
+            <h3>Senior Secondary</h3>
+            <p>Science, Commerce & Arts streams.</p>
+        </div>
+    </div>
+</section>
+
+<section id="teachers">
+    <h2>Our Teachers</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Mr. Rahul Sharma</h3>
+            <p>Mathematics (10+ years experience)</p>
+        </div>
+        <div class="card">
+            <h3>Ms. Anjali Verma</h3>
+            <p>Science (8+ years experience)</p>
+        </div>
+        <div class="card">
+            <h3>Mrs. Neha Singh</h3>
+            <p>English (12+ years experience)</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Notice Board</h2>
+    <div class="notice" id="noticeBox">
+        Admissions Open for Academic Year 2026-27
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2023 Green Valley Public School | All Rights Reserved by Talent Growth initiative</p>
+</footer>
+
+<script>
+    function submitForm(event) {
+        event.preventDefault();
+        alert("Thank you! Your message has been submitted successfully.");
+    }
+
+    // Simple notice animation
+    setInterval(() => {
+        const notice = document.getElementById("noticeBox");
+        notice.style.background = notice.style.background === "rgb(255, 243, 205)"
+            ? "#d4edda"
+            : "#fff3cd";
+    }, 2000);
+</script>
+
+</body>
+</html>
