@@ -1,373 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #0077b6;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        section {
-            padding: 20px;
-            background: white;
-            margin: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #0077b6;
-        }
-        footer {
-            background-color: #0077b6;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-		
-		table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munish Kumar | Java Technical Lead</title>
 
-th {
-    border: 2px solid #0b3c5d;     /* Dark blue border */
-    background-color: #0077b6;;    /* Header background */
-    color: white;                /* Header text */
-    text-align: left;
-    padding: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f6f9;
+        color: #222;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+    }
 
-td {
-    border: 1px solid #cfd8dc;    /* Light gray border */
-    text-align: left;
-    padding: 8px;
-    color: #9e9e9e;              /* Dark gray text */
-    background-color: #ffffff;
-}
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin: 0;
+        padding: 0;
+    }
 
-tr:nth-child(even) {
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        padding-bottom: 4px;
+    }
 
-}
-		
-		
-    </style>
-	
-	<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/580db52dcfdf421cf972baa7/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+    nav a.active {
+        border-bottom: 2px solid #38bdf8;
+        color: #38bdf8;
+    }
+
+    nav a:hover {
+        color: #38bdf8;
+    }
+
+    header {
+        background: #1f2937;
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 32px;
+        min-height: 40px;
+    }
+
+    section {
+        padding: 30px 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    h2 {
+        border-bottom: 2px solid #1f2937;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 15px;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: #1f2937;
+        color: white;
+        font-size: 14px;
+    }
+</style>
 </head>
+
 <body>
 
-    <header>
-	<center><img src=" Munish-Pic.jpg" alt=" Munis kumar image" width="200" height="250"></center>
+<!-- NAVIGATION -->
+<nav>
+    <ul>
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#leadership" class="nav-link">Leadership</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
 
-        <h1>Munish  Kumar</h1>
-        <p>Technical Lead/Software Developer | Java | Microservices | Spring Boot| AI Engineer | AWS | Jenkins </p>
-		<p>EX TCS ,EX SAMSUNG ,EX NEWGEN</p>
-		<p>Experience in Product and Service Based Organization</p>
-		<table border="1" cellpadding="8" cellspacing="0" width="100%" style="border-collapse:collapse; font-family: Arial;">
-<thead style="background-color:#0b3c5d; color:white;">
-        <tr>
-            <th width="5%">#</th>
-            <th width="95%">Roles & Responsibilities</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><td>1</td><td>Offshore–Onsite coordination</td></tr>
-        <tr><td>2</td><td>5 years of experience in project module management, handling module deliverables and currently leading a team of 7 associates</td></tr>
-        <tr><td>3</td><td>Project estimation</td></tr>
-        <tr><td>4</td><td>Project planning</td></tr>
-        <tr><td>5</td><td>Weekly Status Report (WSR) preparation</td></tr>
-        <tr><td>6</td><td>Handling client calls and validating code changes as per business requirements</td></tr>
-        <tr><td>7</td><td>Code development using Core Java and Advanced Java</td></tr>
-        <tr><td>8</td><td>Root cause analysis for production issues raised by end users</td></tr>
-        <tr><td>9</td><td>5 years of experience in requirement analysis with business and technical teams and preparing Low Level Design (LLD)</td></tr>
-        <tr><td>10</td><td>Preparation of Knowledge Transition (KT) documents for new project members</td></tr>
-        <tr><td>11</td><td>Reviewing and enforcing coding standards</td></tr>
-        <tr><td>12</td><td>Technical documentation and handbook preparation</td></tr>
-        <tr><td>13</td><td>Proficient in working with Eclipse IDE,Intelli-J Idea</td></tr>
-        <tr><td>14</td><td>Experience working in both Waterfall and Agile methodologies</td></tr>
-        <tr><td>15</td><td>Code development includes unit testing, checklists, UTC and UTR</td></tr>
-        <tr><td>16</td><td>Quick learner and self-initiator</td></tr>
-        <tr><td>17</td><td>Mentored junior team members, providing guidance, training, and professional development support</td></tr>
-		<tr><td>18</td><td>Root cause analysis for production bugs raise by end user or customer care centers and provide those workarounds within defined SLA.</td></tr>
-		<tr><td>19</td><td>Quick learner and self-initiator.</td></tr>
-		<tr><td>20</td><td>Tweaking the system to support the business users’ needs</td></tr>
-		<tr><td>21</td><td>Contribute to all phases of the development lifecycle</td></tr>
-		<tr><td>22</td><td>Well-designed, testable, and efficient code.</td></tr>
-		<tr><td>23</td><td>Preparing various daily and weekly reports.</td></tr>
-		<tr><td>24</td><td>Familiarity with cloud platforms such as AWS skilled in deploying and managing applications in cloud environments, leveraging services such as EC2, and S3, IAM,elastic bean stalk</td></tr>
-		<tr><td>25</td><td>Knowledgeable in maintaining CI/CD pipelines using tools such as Jenkins enabling automated deployment processes to streamline development workflows.</td></tr>
+<!-- HOME -->
+<header id="home">
+    <h1 id="typing"></h1>
+	<p>Technical Lead/Software Developer | Java | Spring Boot| Microservices | AI Engineer | AWS | Jenkins</p>
+    <p>Email: er.munishnangal1@email.com | Phone: +91-9876576542 | Location: India</p>
+	<p>EX TCS ,EX SAMSUNG ,EX NEWGEN</p>
+	<p>Experience in Product and Service Based Organization</p>
+</header>
 
+<!-- ABOUT -->
+<section id="about">
+    <h2>Professional Summary</h2>
+    <p>
+        Technical Lead with 10+ years of experience in Java, Spring Boot, and Microservices architecture.
+        Experienced in offshore-onsite coordination, project module management, requirement analysis,
+        Low Level Design (LLD), production support, and CI/CD automation. Skilled in AWS cloud deployment,
+        DevOps practices, and AI-driven development tools.
+    </p>
+</section>
 
-	</tbody>
-</table>
-
-    </header>
+<!-- LEADERSHIP -->
+<section id="leadership">
+    <h2>Leadership & Responsibilities</h2>
+    <ul>
 	
-    <section>
-        <h2>About Me</h2>
-        <p>Hello! I am a passionate software developer with hands-on experience in Java, Microservices, and Spring Boot development. I love building scalable applications and learning modern technologies.</p>
-		
-		<p>Experience of +10 years of industry experience in building products</p>
-		
-	<p>	Working Experience of Core Java, Advance Java and Prompt Engineer. 
-	Currently I am working as developer and technical lead in the Finance module project.
-	Seeking a challenging career in development domain as lead/developer that utilizes my experience.</p>
-
-	<p>Education: B. Tech in Electronics and Communication (73%). College: BHSBIET, PTU.</p>
-
-    </section>
-
-    <section>
-        <h2>Skills/Technology</h2>
-		
-		<h2>
-		
-<table>
-  <tr>
-    <th>Technology</th>
-    <th>Products/Tool/Process</th>
-    <th>Database</th>
-	<th>AI</th>
-	<th>AI Tools</th>
-  </tr>
-  <tr>
-    <td>Core Java</td>
-    <td>Eclipse </td>
-    <td>Oracle10G </td>
-	 <td>Spring AI</td>
-	 <td>chatGPT</td>
-  </tr>
-  <tr>
-    <td>Servlet</td>
-    <td>Intelli-J Idea</td>
-    <td>MySql</td>
-	 <td>Generative AI</td>
-	 <td>Deepseek </td>
-  </tr>
-  <tr>
-    <td>Jsp</td>
-    <td>Bamboo</td>
-    <td>Postresql</td>
-	 <td>Prompt Engineer</td>
-	 <td>Clien</td>
-  </tr>
-  <tr>
-    <td>SQL</td>
-    <td>Agile</td>
-    <td>Mongo DB</td>
-	 <td>AI Agent</td>
-	 <td>Augment</td>
-  </tr>
-  <tr>
-    <td>Jdbc</td>
-    <td>Waterfall</td>
-    <td>H2</td>
-	 <td> </td>
-	 <td>COPILOT</td>
-  </tr>
-  <tr>
-    <td>Hibernate</td>
-    <td>Adm </td>
-    <td></td>
-	 <td> </td>
-	 <td>Grok</td>
-  </tr>
-    <tr>
-    <td>JPA</td>
-    <td>WAS8.5  </td>
-    <td></td>
-	 <td> </td>
-	 <td>Claude</td>
-  </tr>
-  
-    <tr>
-    <td>Spring Core,IOC,AOP</td>
-    <td>Tomcat   </td>
-    <td></td>
-	 <td> </td>
-	 <td>Perplexity</td>
-  </tr>
-  
-  
-    <tr>
-    <td>Spring MVC,JDBC,Batch</td>
-    <td>Win Merge  </td>
-    <td></td>
-	 <td> </td>
-	 <td>Compose</td>
-  </tr>
-  
-    <tr>
-    <td>Spring Security, JWT</td>
-    <td>DJ compiler  </td>
-    <td></td>
-	 <td> </td>
-	 <td>Augment</td>
-  </tr>
-  
-  
-  
-    <tr>
-    <td>Spring Boot</td>
-    <td>Postman  </td>
-    <td></td>
-	 <td> </td>
-	 <td>Check Style</td>
-  </tr>
-  
-  
-    <tr>
-    <td>Maven</td>
-    <td>Swagger  </td>
-    <td></td>
-	 <td> </td>
-	 <td>J-Sparrow</td>
-  </tr>
-  
-  
-    <tr>
-    <td>Java 5,6,7,8,11,14,17,21,25</td>
-    <td>Graphql  </td>
-    <td></td>
-	 <td> </td>
-	 <td>Spotbugs</td>
-  </tr>
-  
-  
-    <tr>
-    <td>Micro Services</td>
-    <td>Jira  </td>
-    <td> </td>
-	 <td> </td>
-  </tr>
-  
-  
-    <tr>
-    <td>KAFKA</td>
-    <td>Sonar  </td>
-    <td> </td>
-  </tr>
-  
-    <tr>
-    <td>GIT/Github/Gitlab </td>
-    <td>Grafana  </td>
-    <td> </td>
-  </tr>
-  
-  
-    <tr>
-    <td>Solid Principle</td>
-    <td>Prometheus  </td>
-    <td> </td>
-  </tr>
-  
-    <tr>
-    <td>Design Patterns</td>
-    <td>Splunk  </td>
-    <td> </td>
-  </tr>
-  
-  
-  <tr>
-    <td>Junit-5</td>
-    <td>Sonar Lint  </td>
-    <td> </td>
-  </tr>
-  
-  <tr>
-    <td>Jenkins CICD Pipeline
-    <td>JMeter  </td>
-    <td> </td>
-  </tr>
-  
-  <tr>
-    <td>Docker /Kubernate</td>
-    <td>   </td>
-    <td> </td>
-  </tr>
-  
-  
-  <tr>
-    <td>AWS (S3,EC2,RDS,EBS,Lambda,IAM,Route 53,Gateway,CloudFront,VPC,SNS,SES,Cloud Watch)</td>
-    <td>   </td>
-    <td> </td>
-  </tr>
-  
-   <tr>
-    <td>Data Structure and Algorithm</td>
-    <td>   </td>
-    <td> </td>
-  </tr>
-  
-   <tr>
-    <td>System Design</td>
-    <td>   </td>
-    <td> </td>
-  </tr>
-  
-  
+	
+	
+	
+        <li>Offshore–Onsite coordination and client communication</li>
+        <li>5 years of experience in project module management, handling module deliverables and currently leading a team of 7 associates   </li>
+        <li>Project estimation, Project planning, and Weekly Status Report (WSR) preparation</li>
+        <li>Requirement analysis and Low-Level Design documentation</li>
+       	<li>Root cause analysis for production bugs raise by end user or customer care centers and provide those workarounds within defined SLA.    </li>
+        <li>Code reviews and enforcing coding standards</li>
+        <li>Knowledge Transition (KT) documentation and mentoring junior developers</li>
+        <li>CI/CD pipeline management and cloud deployment</li>
+        <li>Agile & Waterfall methodology implementation</li>
+        <li>Well-designed, testable, and efficient code</li>
+        <li>Full development lifecycle contribution</li>
+        <li>Code development using Core Java and Advanced Java   </li>
+        <li>Handling client calls and validating code changes as per business requirements.   </li>
+		<li>Reviewing and enforcing coding standards  .  </li>
+		<li>Technical documentation and handbook preparation .   </li>
+		<li>Proficient in working with Eclipse IDE,Intelli-J Idea  .  </li>
+		<li>Code development includes unit testing, checklists, UTC and UTR.    </li>
+		<li>Mentored junior team members, providing guidance,  aining, and professional development support    </li>
+		<li>Quick learner and self-initiator.    </li>
+		<li>Tweaking the system to support the business users’ needs   </li> 
+		<li>Contribute to all phases of the development lifecycle  </li>  
+		<li>Preparing various daily and weekly reports.    </li>
+		<li>Familiarity with cloud platforms such as AWS skilled in deploying and managing applications in cloud environments, leveraging services such as EC2,S3,IAM,elastic bean stalk.</li>
+		<li>Knowledgeable in maintaining CI/CD pipelines using tools such as Jenkins enabling automated deployment process. </li>.
 
 
+    </ul>
+</section>
 
-</table>
-		
-		</h2>
-    </section>
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Technical Skills</h2>
+   <div class="grid">
 
-    <section>
-        <h2>Projects</h2>
-        <ul>
-            <li>Bank Workflow Projects</li>
-            <li>Retail Projects</li>
-            <li>Student Management REST Application</li>
-			<li>Email Projects</li>
-        <li><a href="test.html" target="_blank">Jewellery Website</a></li>
-        <li><a href="school.html" target="_blank" >School Website</a></li>
-        <li><a href="ecommerce.html" target="_blank" >E-Commerce Website</a></li>
-		 <li><a href="quiz.html" target="_blank" >Quiz</a></li>
+        <div class="card">
+            <h3>Programming & Frameworks</h3>
+            <ul>
+                <li>Core Java (5–25)</li>
+                <li>Servlet, JSP, JDBC</li>
+                <li>Spring Core, MVC, Boot</li>
+                <li>Spring Security, JWT</li>
+                <li>Spring Batch</li>
+                <li>Hibernate, JPA</li>
+                <li>Microservices, Kafka</li>
+                <li>Data Structures & Algorithms</li>
+                <li>Design Patterns, SOLID</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>DevOps & Cloud</h3>
+            <ul>
+                <li>AWS (EC2, S3, RDS, IAM, Lambda)</li>
+                <li>API Gateway, Route53, VPC</li>
+                <li>CloudFront, SNS, SES</li>
+                <li>Docker</li>
+                <li>Jenkins CI/CD</li>
+                <li>Maven</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Tools & Monitoring</h3>
+            <ul>
+                <li>Eclipse, IntelliJ IDEA</li>
+				<li>DJ Compiler</li>
+				<li>Tomcat</li>
+				<li>WinMerge</li>
+				<li>Requestly</li>
+                <li>Jira, Sonar, SonarLint</li>
+                <li>Grafana, Prometheus, Splunk</li>
+                <li>Swagger, Postman</li>
+                <li>JMeter</li>
+                <li>Git / GitHub / GitLab</li>
+				<li>SpotBugs</li>
+				<li>J-Sparrow</li>
+				<li>Checkstyle</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Databases</h3>
+            <ul>
+                <li>Oracle 10G</li>
+                <li>MySQL</li>
+                <li>PostgreSQL</li>
+                <li>MongoDB</li>
+                <li>H2</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>AI & Developer Productivity</h3>
+            <ul>
+                <li>Spring AI</li>
+                <li>AI Agents</li>
+                <li>Generative AI</li>
+                <li>Prompt Engineering</li>
+                <li>GitHub Copilot</li>
+                <li>ChatGPT</li>
+                <li>Claude, Gemini</li>
+                <li>Perplexity, Cursor</li>
+                <li>Codeium, Tabnine</li>
+                <li>Amazon CodeWhisperer</li>
+				<li>Cursor</li>
+				<li>Codeium </li>
+				<li>Tabnine </li>
+				<li>Amazon CW </li>
+				<li>Replit </li>
+				<li>Google Gemini</li>
+				<li>Mutable.ai</li>
+				<li>DeepCode</li>
+
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+     <ul>
+        <li>Bank Workflow Projects</li>
+        <li>Retail Projects</li>
+        <li>Student Management REST Application</li>
+		<li>Email Projects</li>
+        <li>Jewellery E-Commerce Platform:-<a href="test.html" target="_blank">Click Here</a></li>
+        <li>School Platform<a href="school.html" target="_blank" >Click Here</a></li>
+        <li>E-Commerce Platform<a href="ecommerce.html" target="_blank" >Click Here</a></li>
+		<li>Quiz Platform<a href="quiz.html" target="_blank" >Click Here</a></li>
       
     </ul>
-        </ul>
-    </section>
+</section>
 
-    <section>
-        <h2>Contact</h2>
-        <p>Email: er.munishnangal1@gmail.com</p>
-        <p>Phone: +91-9876576542</p>
-		
-		<p>Linkedin Profile:<a href="https://www.linkedin.com/in/munish-kumar-b6b1b31a4/" target="_blank">click here</a></p>
-    </section>
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: er.munishnangal1@gmail.com</p>
+    <p>Phone: +91-9876576542</p>
+    <p>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/munish-kumar-b6b1b31a4/" target="_blank">
+            Click Here
+        </a>
+    </p>
+</section>
 
-    <footer>
-        © 2025  Munish kumar Portfolio
-    </footer>
+<footer>
+    © 2026 Munish Kumar | Java Technical Lead | Portfolio
+</footer>
+
+<!-- TYPING + ACTIVE MENU SCRIPT -->
+<script>
+const text = "Munish Kumar";
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 120);
+    }
+}
+typeEffect();
+
+/* ACTIVE MENU ON SCROLL */
+const sections = document.querySelectorAll("section, header");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
