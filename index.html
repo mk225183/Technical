@@ -5,7 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Munish Kumar | Java Technical Lead</title>
 
+
+<!-- Font Awesome for WhatsApp Icon -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
+
+/* Floating Button */
+.whatsapp-btn{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background:#25D366;
+  color:white;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  z-index:999;
+}
+
+/* Popup Box */
+.whatsapp-popup{
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width:280px;
+  background:#fff;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  overflow:hidden;
+  display:none;
+  z-index:999;
+}
+
+/* Header */
+.whatsapp-header{
+  background:#25D366;
+  color:#fff;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.whatsapp-header span{
+  font-size:14px;
+}
+
+.close-btn{
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* Body */
+.whatsapp-body{
+  padding:15px;
+  background:#f2f2f2;
+}
+
+.message-box{
+  background:white;
+  padding:10px;
+  border-radius:10px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* Open Chat Button */
+.open-chat{
+  margin-top:15px;
+  background:#25D366;
+  color:white;
+  border:none;
+  width:100%;
+  padding:10px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.open-chat:hover{
+  background:#1ebe5d;
+}
     body {
         font-family: Arial, Helvetica, sans-serif;
         margin: 0;
@@ -346,5 +434,55 @@ window.addEventListener("scroll", () => {
 });
 </script>
 
+
+
+<!-- Popup -->
+<div class="whatsapp-popup" id="waPopup">
+
+  <div class="whatsapp-header">
+    <span><i class="fa-brands fa-whatsapp"></i> WhatsApp</span>
+    <span class="close-btn" onclick="togglePopup()">✖</span>
+  </div>
+
+  <div class="whatsapp-body">
+    <div class="message-box">
+      Hello 👋 <br>
+      How can we help you? <br>
+      Team Munish
+    </div>
+
+    <button class="open-chat"
+    onclick="openWhatsApp()">
+      Open Chat
+    </button>
+  </div>
+
+</div>
+
+<!-- Floating Button -->
+<div class="whatsapp-btn" onclick="togglePopup()">
+  <i class="fa-brands fa-whatsapp"></i>
+</div>
+
+<script>
+
+function togglePopup(){
+  const popup = document.getElementById("waPopup");
+  popup.style.display =
+    popup.style.display === "block" ? "none" : "block";
+}
+
+function openWhatsApp(){
+  const phone = "919876576542"; // change number
+  const message = "Hello Team Munish";
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+</script>
+
+
+
 </body>
 </html>
+
